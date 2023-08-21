@@ -14,7 +14,7 @@ def lookup(name: str) -> str:
     Your answer should contain only a URL"""
 
     # The first parameter is name, which is mandatory. We gave it Crawl Google for LinkedIn profile page. Now this
-    # must be unique between every tools. So the function is also mandatory and it's the function that's going to be
+    # must be unique between every tool. So the function is also mandatory and it's the function that's going to be
     # called when the LM decides to use this tool. We're going to put in the future a function which is going to
     # search Google for that LinkedIn page. The description argument is optional, but it's super recommended to use
     # it. Because the agent, when it determines whether to use this tool or not, it does it through the description.
