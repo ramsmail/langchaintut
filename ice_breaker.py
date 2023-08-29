@@ -1,16 +1,18 @@
+from typing import Tuple
+
 from langchain import PromptTemplate
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain
 
 from agents.linkedin_lookup_agent import lookup as linkedin_lookup_agent
 from agents.twitter_lookup_agent import lookup as twitter_lookup_agent
-from output_parser import person_intel_parser
+from output_parser import person_intel_parser, PersonIntel
 from third_parties.linkedin import scrape_linkedin_profile
 from third_parties.twitter import scrape_user_tweet
 from agents.twitter_lookup_agent import lookup as twitter_lookup_agent
 
 
-def ice_break(name: str) -> PersonIntel:
+def ice_break(name: str) -> Tuple[PersonIntel, str]:
     # Get the URL using the lookup agent in agents
     linkedin_profile_url = linkedin_lookup_agent(name=name)
     # Scrape the URL using the scrape_linkedin_profile function from linkedin.py under third_parties
@@ -50,7 +52,7 @@ def ice_break(name: str) -> PersonIntel:
     # Feed the chain with linkedin and twitter data for the model to extract information from.
     result = chain.run(linkedin_information=linkedin_data, twitter_information=tweets)
     print(result)
-    return person_intel_parser.parse(result)
+    return person_intel_parser.parse(result), linkedin_data.get("profile_pic_url")
 
 
 if __name__ == "__main__":

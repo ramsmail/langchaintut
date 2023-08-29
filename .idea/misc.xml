@@ -4,4 +4,7 @@
     <option name="sdkUUID" value="ccd51410-6339-42bd-9ace-578d5e52b300" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="Pipenv (ice_breaker)" project-jdk-type="Python SDK" />
+  <component name="PyCharmProfessionalAdvertiser">
+    <option name="shown" value="true" />
+  </component>
 </project>
