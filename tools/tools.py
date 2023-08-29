@@ -40,6 +40,7 @@ class CustomSerpAPIWrapper(SerpAPIWrapper):
 def get_profile_url(text: str) -> str:
     # The below doc string is used by the Agent to decide if this is right tool? (But we give the tool and function
     # explicitly) I got an error message just by having """ "Search... - etc "!!
+    # This function uses the SerpAPI toolkit to access the APIs provided by say Linkedin or Twitter etc
     """Searches for Linkedin Profile page"""
     search = CustomSerpAPIWrapper()
     res = search.run(f"{text}")
