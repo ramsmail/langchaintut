@@ -1,4 +1,5 @@
 from langchain.serpapi import SerpAPIWrapper
+from langchain.tools import tool
 
 
 class CustomSerpAPIWrapper(SerpAPIWrapper):
@@ -37,10 +38,13 @@ class CustomSerpAPIWrapper(SerpAPIWrapper):
         return toret
 
 
+@tool
 def get_profile_url(text: str) -> str:
     # The below doc string is used by the Agent to decide if this is right tool? (But we give the tool and function
     # explicitly) I got an error message just by having """ "Search... - etc "!!
     # This function uses the SerpAPI toolkit to access the APIs provided by say Linkedin or Twitter etc
+    # This method is generic, even though the descriptio below states that it searches for Linkedin,
+    # the description in the tools_for_agent declaration has the required description and the below will be overridden
     """Searches for Linkedin Profile page"""
     search = CustomSerpAPIWrapper()
     res = search.run(f"{text}")
